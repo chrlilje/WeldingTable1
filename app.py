@@ -42,7 +42,7 @@ class App:
         self.data_queue: queue.Queue = queue.Queue()
 
         # Make the boxes - User interface
-        self.speedBox = NumberBox(self.root, "Speed", 23,  2, "mm/min")
+        self.speedBox = NumberBox(self.root, "Speed", 23,  0, "mm/min")
         self.rpmBox   = NumberBox(self.root, "RPM",   123, 1, "rpm")
         self.statusLabel = StatusLabel(self.root, self.status_text)
 

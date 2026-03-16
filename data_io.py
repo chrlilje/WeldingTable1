@@ -5,7 +5,7 @@ from queue import Queue
 import serial.tools.list_ports
 import serial
 
-USE_MOCK_DATA = True # Flip this to test the real logic
+USE_MOCK_DATA = False # Flip this to test the real logic
 BAUD_RATE = 9600
 TARGET_ID = "FOOT_PEDAL"
 
@@ -51,8 +51,8 @@ def _fetch_real_serial_data(data_queue: Queue):
 
 def _parse_line(line: str) -> dict | None:
     """
-    Input: "ID:FOOT_PEDAL;SPD:50.00;RPM:750"
-    Output: {"speed": 50.0, "rpm": 750.0}
+    Input: "ID:FOOT_PEDAL;VAL:50.00;RPM:750"
+    Output: {"speeder_rate": 50.0, "rpm": 750.0}
     """
     try:
         parts = line.split(';')
@@ -60,8 +60,8 @@ def _parse_line(line: str) -> dict | None:
         for part in parts:
             if ':' in part:
                 key, value = part.split(':')
-                if key == "SPD":
-                    data["speed"] = float(value)
+                if key == "VAL":
+                    data["speeder_rate"] = float(value)
                 elif key == "RPM":
                     data["rpm"] = float(value)
         return data

@@ -11,7 +11,7 @@ BOX_BACKGROUND = "#34495e"   # Slightly lighter – individual number-box backgr
 #   Tkinter font format: (family, size)  or  (family, size, weight)
 #   'Segoe UI' is available on Windows; tkinter falls back gracefully elsewhere.
 
-FONT_FAMILY = "Segoe UI"
+FONT_FAMILY = "monospace"
 
 FONT_TITLE  = (FONT_FAMILY, 13)
 FONT_VALUE  = (FONT_FAMILY, 64, "bold")
