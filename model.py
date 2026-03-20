@@ -13,11 +13,15 @@ class WeldTable:
         # Configuration
         self.object_diameter = 10.0
         self.max_weld_speed = 200.0
-        
+        self.stepper_steps_per_revolution = 400  # Example value, adjust as needed
+        # TODO: Make a config file or UI to set these values, and persist them across runs.
+
         # Values
         self.speeder_rate = 0.0
         self.weld_speed = 0.0
         self.table_rpm = 0.0
+        self.stepper_speed = 0.0  # Speed in steps/sec for the stepper motor (derived from weld_speed and object_diameter)
+        self.stepper_acc = 0.0 # Placeholder for future acceleration control
 
     def set_system_status(self, message: str):
         """Allows the Controller to pass hardware/port status into the Model."""
@@ -56,3 +60,6 @@ class WeldTable:
             self.table_rpm = self.weld_speed / circumference
         else:
             self.table_rpm = 0.0
+
+        # Calculate stepper speed (example calculation - adjust as needed)
+        self.stepper_speed = self.table_rpm * self.stepper_steps_per_revolution  # Replace 100 with actual steps per revolution
